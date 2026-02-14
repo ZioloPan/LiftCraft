@@ -1,0 +1,12 @@
+version: "3"
+services:
+  db:
+    container_name: db-lift-craft
+    image: mysql
+    ports:
+      - "3333:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_DATABASE=lift_craft
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
