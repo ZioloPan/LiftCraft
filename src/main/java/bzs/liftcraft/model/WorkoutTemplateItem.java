@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,14 +21,20 @@ import java.util.Set;
 @Setter
 @Builder
 @Entity
-public class MuscleGroup {
+public class WorkoutTemplateItem {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String tag;
-    private String name;
+    @ManyToOne
+    private WorkoutTemplate workoutTemplate;
 
-    @OneToMany(mappedBy = "muscleGroup")
-    private Set<Exercise> exercises = new HashSet<>();
+    @ManyToOne
+    private Exercise exercise;
+
+    private Integer orderIndex;
+
+    @OneToMany(mappedBy = "workoutTemplateItem")
+    private Set<WorkoutTemplateSet> workoutTemplateSets = new HashSet<>();
 }

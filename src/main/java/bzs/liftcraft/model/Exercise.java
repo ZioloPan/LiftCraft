@@ -5,11 +5,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -33,4 +37,10 @@ public class Exercise {
     private Equipment equipment;
 
     private String photo;
+
+    @OneToMany(mappedBy = "exercise")
+    private Set<WorkoutTemplateItem> workoutTemplateItems = new HashSet<>();
+
+    @OneToMany(mappedBy = "exercise")
+    private Set<WorkoutExercise> workoutExercises = new HashSet<>();
 }

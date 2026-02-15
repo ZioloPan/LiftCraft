@@ -29,5 +29,5 @@ public class Equipment {
     private String name;
 
     @OneToMany(mappedBy = "equipment")
-    Set<Exercise> exercises = new HashSet<>();
+    private Set<Exercise> exercises = new HashSet<>();
 }
